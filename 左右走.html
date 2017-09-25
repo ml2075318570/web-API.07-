@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="向前走" id="btn1" />
+<input type="button" value="往回走" id="btn2" />
+<div id="box"></div>
+</body>
+<script>
+    var oBtn1 = document.getElementById('btn1');
+    var oBtn2 = document.getElementById('btn2');
+    var oBox = document.getElementById('box');
+    //
+    var timer = null;
+    oBtn1.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var dis = oBox.offsetLeft + 7;
+            if(dis >= 800){
+                dis = 800;
+            }
+            oBox.style.left = dis +'px';
+            if(dis == 800){
+                clearInterval(timer);
+                timer = null;
+            }
+        },20)
+    };
+    oBtn2.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var dis = oBox.offsetLeft - 7;
+            if(dis <= 100){
+                dis = 100;
+            }
+            oBox.style.left = dis +'px';
+            if(dis == 100){
+                clearInterval(timer);
+                timer = null;
+            }
+        },20)
+    }
+</script>
+</html>
